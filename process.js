@@ -13,10 +13,6 @@ var _pluralize = require('pluralize');
 
 var _pluralize2 = _interopRequireDefault(_pluralize);
 
-var _path = require('path');
-
-var _path2 = _interopRequireDefault(_path);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var _createNodeHelpers = (0, _gatsbyNodeHelpers2.default)({
@@ -75,11 +71,7 @@ var createTableItemFactory = exports.createTableItemFactory = function createTab
                     return file.directus.name === _name;
                 });
                 if (file) {
-                    var gatsbyFile = file.gatsby;
-                    var filename = gatsbyFile.name + '-' + gatsbyFile.internal.contentDigest + gatsbyFile.ext;
-                    // This might not work if the site has a basePath set. It is relative to the domain root.
-                    var publicPath = _path2.default.join('/static', filename);
-                    node[key].url = publicPath;
+                    node[key].file___NODE = file.gatsby.id;
                 }
             }
         });
